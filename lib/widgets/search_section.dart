@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:perplexity/pages/chat_page.dart';
+import 'package:perplexity/services/chat_web_service.dart';
 import 'package:perplexity/theme/colors.dart';
 import 'package:perplexity/widgets/search_bar_button.dart';
 
-class SearchSection extends StatelessWidget {
+class SearchSection extends StatefulWidget {
   const SearchSection({super.key});
+
+  @override
+  State<SearchSection> createState() => _SearchSectionState();
+}
+
+class _SearchSectionState extends State<SearchSection> {
+  final queryController = TextEditingController();
+
+  @override
+  void dispose() {
+    queryController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Where Knowledge Begins",
-            style: GoogleFonts.ibmPlexMono(
-              fontSize: 40,
-              fontWeight: FontWeight.w400,
-              height: 1.2,
-              letterSpacing: -0.5,
-            )),
-        const SizedBox(
-          height: 32,
+        Text(
+          "Where Knowledge Begins",
+          style: GoogleFonts.ibmPlexMono(
+            fontSize: 40,
+            fontWeight: FontWeight.w400,
+            height: 1.2,
+            letterSpacing: -0.5,
+          ),
         ),
+        const SizedBox(height: 32),
         Container(
           width: 700,
           decoration: BoxDecoration(
@@ -33,6 +48,7 @@ class SearchSection extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(16),
                 child: TextField(
+                  controller: queryController,
                   decoration: InputDecoration(
                     hintText: 'Search anything...',
                     hintStyle: TextStyle(
@@ -50,23 +66,31 @@ class SearchSection extends StatelessWidget {
                 child: Row(
                   children: [
                     SearchBarButton(
-                        icon: Icons.auto_awesome_outlined, text: 'Focus'),
-                    SizedBox(
-                      width: 12,
+                      icon: Icons.auto_awesome_outlined,
+                      text: 'Focus',
                     ),
+                    SizedBox(width: 12),
                     SearchBarButton(
-                        icon: Icons.add_circle_outline, text: 'Attach'),
+                      icon: Icons.add_circle_outline,
+                      text: 'Attach',
+                    ),
                     Spacer(),
-                    Container(
-                      padding: EdgeInsets.all(9),
-                      decoration: BoxDecoration(
-                        color: AppColors.submitButton,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Icon(
-                        Icons.arrow_forward,
-                        color: AppColors.background,
-                        size: 16,
+                    GestureDetector(
+                      onTap: () {
+                        ChatWebService().chat(queryController.text.trim());
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ChatPage(question: queryController.text.trim())));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(9),
+                        decoration: BoxDecoration(
+                          color: AppColors.submitButton,
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: AppColors.background,
+                          size: 16,
+                        ),
                       ),
                     ),
                   ],
