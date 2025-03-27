@@ -1,6 +1,7 @@
 # IntelliSeek
 
-A new Flutter project.
+IntelliSeek is an innovative Flutter-based application designed to provide users with intelligent search capabilities. Leveraging modern technologies, it delivers fast, accurate, and user-friendly search results. The app is built with a focus on simplicity, performance, and cross-platform compatibility, ensuring a seamless experience on Android, iOS, Linux, and the web.
+
 
 
 ## App Visuals
