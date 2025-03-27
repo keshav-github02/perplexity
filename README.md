@@ -1,16 +1,18 @@
-# perplexity
+# IntelliSeek
 
 A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## App Visuals
 
-A few resources to get you started if this is your first Flutter project:
+Here are some visuals of the app:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Home Screen
+![Home Screen](</visuals/Screenshot 2025-03-27 143206.png>)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Features
+![Initial Loading](</visuals/Screenshot 2025-03-27 143515.png>)
+![Source](</visuals/Screenshot 2025-03-27 143905.png>)
+
+### Additional Screens
+![Results](</visuals/Screenshot 2025-03-27 143920.png>)
